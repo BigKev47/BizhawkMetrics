@@ -23,7 +23,8 @@ else
   -- TODO: Someone who has actually done something with
   --       windows in the last decade should fix this
   osFamily = WINDOWS
-  statsPath = "\\tetris_stats\\"
+  statsPath = os.getenv("tetris")
+  os.execute("mkdir -p " .. statsPath .. "\\replays\\")
 end
 print("Running on " .. osFamily .. "\n")
 

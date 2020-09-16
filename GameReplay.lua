@@ -47,7 +47,7 @@ function GameReplay:toJson()
 end
 
 function GameReplay:writeReplay()
-  local path = statsPath .. 'replays/' .. self.filename
+  local path = statsPath .. '\\replays\\' .. self.filename
   local f = io.open(path, "w")
   if f == nil then
     print("Could not read file: " .. path .. "\n")
