@@ -96,6 +96,16 @@ function Game:toJson()
 	t.avgPressesPerTetrimino = self:avgPressesPerTetrimino()
 	t.avgSlope = self:avgSlope()
 	t.avgBumpiness = self:avgBumpiness()
+	t.nrLines = self.nrLines
+	t.nrClears = self.nrClears
+	t.tetrises = self.tetrises
+	t.triples = self.triples
+	t.doubles = self.doubles
+	t.singles = self.singles 
+	t.tetrisRate = self.tetrisRate
+	t.droughts  = self.droughts
+	t.droughtMax = self.droughtMax
+	t.droughtAvg = self.droughtAvg
   return json.encode(t)
 end
 
@@ -109,6 +119,7 @@ function Game:writeStats()
     f:flush()
     f:close()
   end
+end
 -- this is all messy AF out the order is so arbitrary...
 function Game:lock (current_tetrimino, next_tetrimino, board, frame, linesThisTurn)
   game:addTetrimino(frame, current_tetrimino, board)
