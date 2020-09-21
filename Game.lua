@@ -2,7 +2,7 @@ require ("Board")
 require ('Class')
 require ("Drought")
 require ('helpers')
-
+require ('Memory')
 -- TODO: APM ?
 -- TODO: DAS info...
 Game = class(function(a,startFrame,startLevel)
@@ -106,6 +106,7 @@ function Game:toJson()
 	t.droughts  = self.droughts
 	t.droughtMax = self.droughtMax
 	t.droughtAvg = self.droughtAvg
+	t.score = getScore()
   return json.encode(t)
 end
 

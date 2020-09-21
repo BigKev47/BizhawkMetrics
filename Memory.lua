@@ -20,6 +20,9 @@ Addresses = {
   ["LinesHigh"]          = 0x0071,
   ["LinesLow"]           = 0x0070,
   ["PlayState"]          = 0x0068,
+  ["Score0-1"]	= 0x0055,
+  ["Score2-3"] = 0x0054,
+  ["Score4-5"] = 0x0053
 }
 
 function readMemory(addr)   return memory.readbyte(Addresses[addr])   end
@@ -30,7 +33,9 @@ function getNextTetrimino() return readMemory("NextTetriminoID") end
 function getPlayState()     return readMemory("PlayState")       end
 function getGameState()     return readMemory("GameState")       end
 function getLevel()         return readMemory("Level")           end
-
+function getScore()	
+	return readMemory("Score0-1") .. readMemory("Score2-3") .. readMemory("Score4-5")
+end
 function setTetrimino(t)
   writeMemory("TetriminoID", t)
 end
