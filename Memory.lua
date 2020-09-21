@@ -34,8 +34,13 @@ function getPlayState()     return readMemory("PlayState")       end
 function getGameState()     return readMemory("GameState")       end
 function getLevel()         return readMemory("Level")           end
 function getScore()	
-	return readMemory("Score0-1") .. readMemory("Score2-3") .. readMemory("Score4-5")
+	return convert(readMemory("Score0-1")) .. convert(readMemory("Score2-3")) .. convert(readMemory("Score4-5"))
 end
+
+function convert(num)
+	return math.floor(num/16) .. num % 16
+end
+
 function setTetrimino(t)
   writeMemory("TetriminoID", t)
 end
