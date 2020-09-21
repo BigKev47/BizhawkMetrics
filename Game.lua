@@ -109,6 +109,7 @@ function Game:writeStats()
     f:flush()
     f:close()
   end
+end
 -- this is all messy AF out the order is so arbitrary...
 function Game:lock (current_tetrimino, next_tetrimino, board, frame, linesThisTurn)
   game:addTetrimino(frame, current_tetrimino, board)
