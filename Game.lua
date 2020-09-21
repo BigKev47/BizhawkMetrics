@@ -79,8 +79,36 @@ function Game:dump()
   print("  avg presses (per tet): " .. self:avgPressesPerTetrimino())
   print("  avg slope: "             .. self:avgSlope())
   print("  avg jaggedness: "        .. self:avgBumpiness())
+  self:writeStats()
 end
 
+function Game:toJson()
+  local t = {}
+	t.avgClear = self:avgClear()
+	t.avgAccomodation = self:avgAccommodation()
+	t.avgMaxHeight = self:avgMaxHeight()
+	t.avgMinHeight = self:avgMinHeight()
+	t.avgDrought = self:avgDrought()
+	t.avgPause = self:avgPause()
+	t.avgSurplus = self:avgSurplus()
+	t.conversionRatio = self:conversionRatio()
+	t.avgReadyDistance = self:avgReadinessDistance()
+	t.avgPressesPerTetrimino = self:avgPressesPerTetrimino()
+	t.avgSlope = self:avgSlope()
+	t.avgBumpiness = self:avgBumpiness()
+  return json.encode(t)
+end
+
+function Game:writeStats()
+  local path = statsPath .. '\\stats\\' .. self.filename
+  local f = io.open(path, "w")
+  if f == nil then
+    print("Could not read file: " .. path .. "\n")
+  else
+    f:write(self:toJson())
+    f:flush()
+    f:close()
+  end
 -- this is all messy AF out the order is so arbitrary...
 function Game:lock (current_tetrimino, next_tetrimino, board, frame, linesThisTurn)
   game:addTetrimino(frame, current_tetrimino, board)
