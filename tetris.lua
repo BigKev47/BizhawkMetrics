@@ -45,6 +45,7 @@ end
 function updateTetriminos(game)
   -- when a game first starts, the tetriminos are always set to 19 and 14.
   -- so we need to detect when this changes, and add the first tetriminos to the game.
+  print(game.tetriminos)
   if (currentTetriminoGlobal == 19 and getTetrimino() ~= 19) then
     game:setInitialTetriminos(emu.framecount(), getTetrimino(), getNextTetrimino())
   end

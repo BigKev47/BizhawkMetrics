@@ -107,6 +107,8 @@ function Game:toJson()
 	t.droughtMax = self.droughtMax
 	t.droughtAvg = self.droughtAvg
 	t.score = getScore()
+	t.startLevel = self.startLevel
+	t.finishLevel = getLevel()
   return json.encode(t)
 end
 
